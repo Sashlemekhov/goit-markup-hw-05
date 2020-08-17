@@ -27,6 +27,8 @@ html {
   --social-icon-team-hover: #ffffff;
   --services-bg: rgba(47, 48, 58, 0.8);
   --backdrop: rgba(0, 0, 0, 0.2);
+
+  --main-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 body {
@@ -93,6 +95,10 @@ footer {
   margin-left: 85px;
 }
 
+.item {
+  position: relative;
+}
+
 .site-nav .item:not(:last-child) {
   margin-right: 50px;
 }
@@ -125,6 +131,8 @@ footer {
 }
 
 .page-nav {
+  position: relative;
+
   padding-top: 32px;
   padding-bottom: 31px;
 
@@ -133,11 +141,10 @@ footer {
   font-size: 14px;
   line-height: 1.14px;
   letter-spacing: 0.02em;
-  position: relative;
 
   transition-property: color;
   transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-timing-function: var(--main-timing-function);
 }
 
 .page-nav:hover {
@@ -149,18 +156,27 @@ footer {
 }
 
 .page-nav-underline {
+  position: absolute;
+  bottom: 0;
+
   width: 100%;
   height: 4px;
   border-radius: 2px;
-  position: absolute;
-  bottom: 0;
 
   background-color: var(--accent-color);
   opacity: 0;
 
   transition-property: opacity;
   transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-timing-function: var(--main-timing-function);
+}
+
+.page-nav.current {
+  color: var(--accent-color);
+}
+
+.page-nav-underline.current {
+  opacity: 1;
 }
 
 .page-nav:hover .page-nav-underline {
@@ -185,7 +201,7 @@ footer {
 
   transition-property: color;
   transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-timing-function: var(--main-timing-function);
 }
 
 .phones-nav:hover {
@@ -245,7 +261,7 @@ footer {
 
   transition-property: background-color;
   transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-timing-function: var(--main-timing-function);
   cursor: pointer;
 }
 
@@ -267,7 +283,8 @@ footer {
 
   background-color: var(--backdrop);
   opacity: 1;
-  transition: opacity 500ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  transition: opacity 500ms var(--main-timing-function);
 }
 
 .backdrop.is-hidden {
@@ -411,8 +428,8 @@ footer {
 }
 
 .item-services {
-  display: flex;
   position: relative;
+  display: flex;
 }
 
 .item-services:not(:last-child) {
@@ -484,7 +501,7 @@ footer {
 
   transition-property: background-color, border-radius, color;
   transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-timing-function: var(--main-timing-function);
 }
 
 .social-list-team li:not(:last-child) {
@@ -545,7 +562,7 @@ footer {
 
   transition-property: color, border-color;
   transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-timing-function: var(--main-timing-function);
 }
 
 .customer-link:hover {
@@ -661,7 +678,7 @@ footer .flex-container {
 
   transition-property: background-color;
   transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-timing-function: var(--main-timing-function);
 }
 
 .social-link-footer:hover {
@@ -731,7 +748,7 @@ footer .flex-container {
 
   transition-property: background-color, color, box-shadow;
   transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-timing-function: var(--main-timing-function);
 }
 
 .portfolio-nav-button:hover {
@@ -785,7 +802,7 @@ footer .flex-container {
 
   transition-property: box-shadow;
   transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-timing-function: var(--main-timing-function);
 }
 
 .link-work:hover {
@@ -825,13 +842,17 @@ footer .flex-container {
 }
 
 .thumb-work-img {
+  position: relative;
+
   width: 368px;
   height: 294px;
-  position: relative;
   overflow: hidden;
 }
 
 .description-work {
+  position: absolute;
+  top: 0;
+
   width: 370px;
   height: 294px;
   padding-top: 63px;
@@ -841,18 +862,16 @@ footer .flex-container {
   margin: 0px;
   text-align: left;
 
-  position: absolute;
-  top: 0;
-  transform: translateY(100%);
-  transition-property: transform;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-
   font-size: 18px;
   line-height: 1.56;
 
   color: var(--secondary-text-color);
   background-color: var(--hover-portfolio-bg);
+
+  transform: translateY(100%);
+  transition-property: transform;
+  transition-duration: 250ms;
+  transition-timing-function: var(--main-timing-function);
 }
 
 .link-work:hover .description-work {
